@@ -1,0 +1,119 @@
+
+body {
+    background-color: white;
+    margin-left: 0px;
+}
+
+#search {
+    z-index: 1;
+    position: fixed;
+    width: 100vw;
+    height: 10vh;
+    left: 0px;
+    top: 0px;
+    background-color: white;
+}
+
+#search_bar {
+    position: fixed;
+    width: 50vw;
+    height: 6vh;
+    left: 25vw;
+    top: 2vh;
+    padding-left: 1vw;
+    font-family: Arial;
+    font-size: 4vh;
+    border-radius: 2vh;
+    border: 1px solid black;
+    background-color: white;
+}
+
+    #search_bar:focus {
+        outline: none;
+        border: 1px solid #CFB53B;
+    }
+
+#product_page_container {
+    margin-top: 4vh;
+}
+
+.product_container {
+    z-index: 0;
+    position: relative;
+    width: 20vw;
+    height: 40vw;
+    margin-left: 4vw;
+    margin-top: 4vw;
+    border-radius: 2vh;
+    border: 1px solid black;
+    cursor: pointer;
+    display: inline-block;
+    background-color: white;
+}
+
+    .product_container:hover {
+        border: 1px solid #CFB53B;
+    }
+
+.product_image {
+    position: absolute;
+    width: 16vw;
+    height: 23vw;
+    left: 2vw;
+    top: 2vw;
+}
+
+.product_title {
+    position: absolute;
+    width: 16vw;
+    height: 3vw;
+    left: 2vw;
+    top: 27vw;
+    font-family: Arial;
+    font-size: 1.5vw;
+}
+
+.product_brand {
+    position: absolute;
+    width: 16vw;
+    height: 3vw;
+    left: 2vw;
+    top: 31vw;
+    font-family: Arial;
+    font-size: 1.5vw;
+}
+
+.product_price {
+    position: absolute;
+    width: 16vw;
+    height: 4vw;
+    left: 2vw;
+    top: 35vw;
+    font-family: Arial;
+    font-size: 1.5vw;
+    text-align: right;
+}
+
+#load_more_button {
+    position: relative;
+    width: 30vh;
+    height: 6vh;
+    margin: 4vw auto;
+    padding-top: 1vh;
+    font-family: Arial;
+    font-size: 4vh;
+    text-align: center;
+    border-radius: 2vh;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+    #load_more_button:hover {
+        border: 1px solid #CFB53B;
+    }
+
+#no_data_text {
+    margin: 15vh 10vh;
+    font-family: Arial;
+    font-size: 4vh;
+}

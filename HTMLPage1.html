@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Clothes Shop</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <form id="search" action="http://localhost:3000/search" method="POST">
+        <input id="search_bar" type="text" name="search_data">
+    </form>
+    <div id="product_page_container">
+    </div>
+    <div id="load_more_button">Load More</div>
+    <p id="no_data_text">No items matching that search term.</p>
+</body>
+</html>
+<script>
+    var i = 0;
+    var jsondata = [];
+
+    //function to submit form on keyboard enter (keyCode 13), sends data to /search
+    var input = document.getElementById("search_bar");
+    input.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            document.getElementById("search").submit();
+        };
+    });
+
+    //function to retrieve search data from /json
+    $.ajax({
+        url: '/json',
+        dataType: 'json',
+        complete: function (data) {
+            jsondata = data.responseJSON;
+            console.log(jsondata);
+            if (jsondata.length == 1) {
+                if (jsondata[0].first_load == true) { //flag set in script.js for whether no search data means the page is being loaded for the first time or there are no matches
+                    $('#load_more_button').hide();
+                    $('#no_data_text').hide();
+                } else {
+                    $('#load_more_button').hide();
+                    $('#no_data_text').show();
+                };
+            } else {
+                if (jsondata.length <= 52) { //number of items shown on a single page, if less then the button is hidden
+                    $('#load_more_button').hide();
+                } else {
+                    $('#load_more_button').show();
+                };
+                $('#no_data_text').hide();
+                for (; i < 52; i++) {
+                    $('#product_page_container').append('<div class="product_container" onclick="window.open("' + jsondata[i].url + '")"> <img class="product_image" src=' + jsondata[i].image_urls[0] + '> <p class="product_title">' + jsondata[i].product_title.split('-')[0] + '</p> <p class="product_brand">' + jsondata[i].brand + '</p> <p class="product_price"> £' + jsondata[i].price + '</p> </div>');
+                };
+            };
+        }
+    });
+
+    //function to load another 52 data items
+    $('#load_more_button').click(function () {
+        console.log('load more triggered');
+        let j = i; 
+        try {
+            for (; i < j + 52; i++) {
+                console.log('loop iterated');
+                $('#product_page_container').append('<div class="product_container" onclick="window.open("' + jsondata[i].url + '")"> <img class="product_image" src=' + jsondata[i].image_urls[0] + '> <p class="product_title">' + jsondata[i].product_title.split('-')[0] + '</p> <p class="product_brand">' + jsondata[i].brand + '</p> <p class="product_price"> £' + jsondata[i].price + '</p> </div>');
+            };
+        } catch { //if theres less than 52 items remaining throws an error when trying to read the non-existent json data
+            $('#load_more_button').hide();
+        };
+    });
+</script>
