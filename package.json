@@ -5,7 +5,7 @@
   "main": "Script1.js",
   "private": true,
   "scripts": {
-    "start": "node Script1.js",
+    "start": "node Script1.js"
   },
   "dependencies": {
     "express": "^4.17.1",
