@@ -59,6 +59,6 @@ router.get('/json', function (req, res) { //sends the matching search terms back
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/', router);
-app.listen(process.env.port || 3000);
+app.listen(process.env.PORT);
 
 console.log('Running at Port 3000');
