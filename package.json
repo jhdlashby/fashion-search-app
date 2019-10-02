@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "A Node.js project",
   "main": "Script1.js",
-  "private": true,
   "scripts": {
     "start": "node Script1.js"
   },
   "dependencies": {
     "express": "^4.17.1",
     "body-parser": "^1.19.0"
-  }
+  }, 
+  "author": "",
+  "license": "ISC"
 }
