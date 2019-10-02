@@ -23,8 +23,8 @@
     
     $('#load_more_button').hide();
     $('#no_data_text').hide();
-    $("#load_more_button").css("opacity", 0);
-    $("#no_data_text").css("opacity", 0);
+    $("#load_more_button").css("opacity", "0");
+    $("#no_data_text").css("opacity", "0");
     
     //function to submit form on keyboard enter (keyCode 13), sends data to /search
     var input = document.getElementById("search_bar");
@@ -45,8 +45,8 @@
                 if (jsondata[0].first_load == true) { //flag set in script.js for whether no search data means the page is being loaded for the first time or there are no matches
                     $('#load_more_button').hide();
                     $('#no_data_text').hide();
-                    $("#load_more_button").css("opacity", 0);
-                    $("#no_data_text").css("opacity", 0);
+                    $("#load_more_button").css("opacity", "0");
+                    $("#no_data_text").css("opacity", "0");
                 } else {
                     $('#load_more_button').hide();
                     $('#no_data_text').show();
